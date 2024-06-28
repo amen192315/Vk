@@ -1,12 +1,20 @@
-import React from 'react'
-import Button from '@mui/material/Button';
+import React, { FC, useState } from 'react';
+import { Box } from '@mui/material';
+import AddPost from './AddPost';
+import { IPost } from '../../../types';
+import Posts from './Posts';
+import { initialPosts } from './initialPosts';
 
-const Home = () => {
+const Home: FC = () => {
+  const [posts, setPosts] = useState<IPost[]>(initialPosts);
   return (
     <div>
-      <Button variant="contained">Hello world</Button>
+      <Box>
+        <AddPost setPosts={setPosts} />
+        <Posts posts={posts} />
+      </Box>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
